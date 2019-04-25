@@ -1,6 +1,5 @@
-// Whitelisting most of the functions listed in "Parser API Synopsis" and "Emitter API Synopsis"
-// `FILE *` API not supported.
-// https://pyyaml.org/wiki/LibYAML
+// Whitelisting most of the functions / types listed in "Parser API Synopsis" and "Emitter API
+// Synopsis". `FILE *` API not supported.  https://pyyaml.org/wiki/LibYAML
 
 use bindgen::Builder as BindgenBuilder;
 use std::env;
@@ -11,8 +10,8 @@ fn main() {
 
     let bindings = BindgenBuilder::default()
         .header("wrapper.h")
-        // Header says: "All members are internal" for these types, and the members pull in tons of
-        // garbage to the bindings.
+        // Header says: "All members are internal" for these types, and the members pull tons of
+        // garbage in to the bindings.
         .opaque_type("yaml_parser_s")
         .opaque_type("yaml_emitter_s")
         // For some reason this is necessary
